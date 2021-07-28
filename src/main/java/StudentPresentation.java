@@ -30,39 +30,65 @@ public class StudentPresentation implements StudentPresentationInterface{
         @Override
         public void performMenu(int choice) {
             Collection<Student> collection;
-            try {
                 switch (choice) {
-                    case 1: {
-                        if (studentService.addStudent(StudentInputOutput.createStudent()))
-                            System.out.println("Student Created Successfully");
-                        else System.out.println("Student Creation failed");
+                    case 1:
+                        try {
+                            if (studentService.addStudent(StudentInputOutput.createStudent()))
+                                System.out.println("Student Created Successfully");
+                            else System.out.println("Student Creation failed");
+                        } catch (SQLException | IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         break;
-                    }
                     case 2:
-                        collection = studentService.listStudentsAscending();
-                        StudentInputOutput.displayStudents(collection);
+                        try {
+                            collection = studentService.listStudentsAscending();
+                            StudentInputOutput.displayStudents(collection);
+                        } catch (SQLException | IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 3:
+                        try {
                         collection = studentService.listStudentsDescending();
                         StudentInputOutput.displayStudents(collection);
+                        } catch (SQLException | IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 4:
+                        try {
                         collection = studentService.getMaxPercentage();
                         StudentInputOutput.displayStudents(collection);
+                        } catch (SQLException | IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 5:
+                        try {
                         collection = studentService.getMaxMathsScore();
                         StudentInputOutput.displayStudents(collection);
+                        } catch (SQLException | IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 6:
+                        try {
                         collection = studentService.getMaxMathsAndScienceScore();
                         StudentInputOutput.displayStudents(collection);
+                        } catch (SQLException | IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 7:
+                        try {
                         System.out.println("Enter Student Roll Number: ");
                         int rollNumber = scanner.nextInt();
                         if (studentService.deleteStudent(rollNumber)) System.out.println("Student with Roll Number " + rollNumber + " is deleted successfully");
                         else System.out.println("Student Not Found!");
+                        } catch (SQLException | IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 8:
                         System.out.println("Thanks for using Student Management System!");
@@ -70,14 +96,9 @@ public class StudentPresentation implements StudentPresentationInterface{
                     default:
                         System.out.println("Invalid Choice Try Again");
                     }
-            } catch (SQLException | ClassNotFoundException | IOException e){
-                e.printStackTrace();
 
             }
 
         }
-
-
-}
 
 
