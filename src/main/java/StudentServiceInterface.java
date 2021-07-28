@@ -1,13 +1,14 @@
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.Collection;
 
 public interface StudentServiceInterface {
-    boolean addStudent(Student student) throws SQLException, ClassNotFoundException;
-    boolean deleteStudent(int rollNumber) throws SQLException, ClassNotFoundException;
-    Collection<Student>  listStudentsAscending() throws SQLException, ClassNotFoundException;
-    Collection<Student>  getMaxPercentage() throws SQLException, ClassNotFoundException;
-    Collection<Student>  getMaxMathsScore() throws SQLException, ClassNotFoundException;
-    Collection<Student>  getMaxMathsAndScienceScore() throws SQLException, ClassNotFoundException;
-    Collection<Student>  listStudentsDescending() throws SQLException, ClassNotFoundException;
+    boolean addStudent(Student student) throws SQLException, ClassNotFoundException, FileNotFoundException;
+    boolean deleteStudent(int rollNumber) throws SQLException, ClassNotFoundException, FileNotFoundException;
+    Collection<Student>  listStudentsAscending() throws SQLException, ClassNotFoundException, FileNotFoundException;
+    Collection<Student>  getMaxPercentage() throws SQLException, ClassNotFoundException, FileNotFoundException;
+    Collection<Student>  getMaxMathsScore() throws SQLException, ClassNotFoundException, FileNotFoundException;
+    Collection<Student>  getMaxMathsAndScienceScore() throws SQLException, ClassNotFoundException, FileNotFoundException;
+    Collection<Student>  listStudentsDescending() throws SQLException, ClassNotFoundException, FileNotFoundException;
 
 }

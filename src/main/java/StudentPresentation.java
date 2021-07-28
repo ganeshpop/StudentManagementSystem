@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Scanner;
@@ -32,78 +33,30 @@ public class StudentPresentation implements StudentPresentationInterface{
             try {
             switch (choice) {
                 case 1: {
-                    System.out.println("Enter Student Name: ");
-                    String name = scanner.nextLine();
-                    System.out.println("Enter English Score: ");
-                    int englishScore = getScore();
-                    System.out.println("Enter Maths Score: ");
-                    int mathsScore =  getScore();
-                    System.out.println("Enter Science Score: ");
-                    int scienceScore =  getScore();
-                    if (studentService.                                                                                                           addStudent(new Student(name,englishScore,mathsScore,scienceScore)))
+                    if (studentService.addStudent(StudentInputOutput.createStudent()))
                         System.out.println("Student Created Successfully");
                     else System.out.println("Student Creation failed");
                     break;
                 }
                 case 2:
                     collection = studentService.listStudentsAscending();
-                    if (collection.size() == 0) {
-                        System.out.println("No Students");
-                        break;
-                    }
-                    for (Student student : collection) {
-                        System.out.println("-----------------------");
-                        System.out.println(student);
-                        System.out.println("-----------------------");
-                    }
+                    StudentInputOutput.displayStudents(collection);
                     break;
                 case 3:
                     collection = studentService.listStudentsDescending();
-                    if (collection.size() == 0) {
-                        System.out.println("No Students");
-                        break;
-                    }
-                    for (Student student : collection) {
-                        System.out.println("-----------------------");
-                        System.out.println(student);
-                        System.out.println("-----------------------");
-                    }
+                    StudentInputOutput.displayStudents(collection);
                     break;
                 case 4:
                     collection = studentService.getMaxPercentage();
-                    if (collection.size() == 0) {
-                        System.out.println("No Students");
-                        break;
-                    }
-                    for (Student student : collection) {
-                        System.out.println("-----------------------");
-                        System.out.println(student);
-                        System.out.println("-----------------------");
-                    }
+                    StudentInputOutput.displayStudents(collection);
                     break;
                 case 5:
                     collection = studentService.getMaxMathsScore();
-                    if (collection.size() == 0) {
-                        System.out.println("No Students");
-                        break;
-                    }
-                    for (Student student : collection) {
-                        System.out.println("-----------------------");
-                        System.out.println(student);
-                        System.out.println("-----------------------");
-                    }
+                    StudentInputOutput.displayStudents(collection);
                     break;
                 case 6:
                     collection = studentService.getMaxMathsAndScienceScore();
-                    if (collection.size() == 0) {
-                        System.out.println("No Students");
-                        break;
-                    }
-                    for (Student student : collection) {
-                        System.out.println("-----------------------");
-                        System.out.println(student);
-                        System.out.println("-----------------------");
-                    }
+                    StudentInputOutput.displayStudents(collection);
                     break;
                 case 7:
                     System.out.println("Enter Student Roll Number: ");
@@ -117,22 +70,13 @@ public class StudentPresentation implements StudentPresentationInterface{
                 default:
                     System.out.println("Invalid Choice Try Again");
             }
-        } catch (SQLException | ClassNotFoundException e){
+        } catch (SQLException | ClassNotFoundException | FileNotFoundException e){
                 e.printStackTrace();
 
             }
 
         }
-        private int getScore(){
-        while (true) {
-            String userInput = scanner.nextLine();
-            if(userInput.matches("[0-9]+") ) {
-                int intUserInput = Integer.parseInt(userInput);
-                if(intUserInput <= 100) return intUserInput;
-                else System.out.println("Maximum Score Allowed is 100");
-            } else System.out.println("Only Integers Allowed Try Again ");
-        }
-    }
+
 
 }
 

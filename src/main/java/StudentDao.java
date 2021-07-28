@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -5,7 +6,7 @@ import java.util.Collection;
 public class StudentDao implements StudentDaoInterface {
 
     @Override
-    public boolean addStudent(Student student) throws SQLException, ClassNotFoundException {
+    public boolean addStudent(Student student) throws SQLException, ClassNotFoundException, FileNotFoundException {
         Connection connection = MySQLConnection.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO students(student_name,english,maths,science,total_score) VALUE(?,?,?,?,?)");
@@ -21,7 +22,7 @@ public class StudentDao implements StudentDaoInterface {
     }
 
     @Override
-    public boolean deleteStudent(int rollNumber) throws SQLException, ClassNotFoundException {
+    public boolean deleteStudent(int rollNumber) throws SQLException, ClassNotFoundException, FileNotFoundException {
         Connection connection = MySQLConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM students WHERE roll_number = ?");
             preparedStatement.setInt(1, rollNumber);
@@ -33,7 +34,7 @@ public class StudentDao implements StudentDaoInterface {
 
 
     @Override
-    public Collection<Student> listStudentsAscending() throws SQLException, ClassNotFoundException {
+    public Collection<Student> listStudentsAscending() throws SQLException, ClassNotFoundException, FileNotFoundException {
         Collection<Student> students = new ArrayList<>();
         Connection connection = MySQLConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students ORDER BY roll_number ASC");
@@ -43,7 +44,7 @@ public class StudentDao implements StudentDaoInterface {
     }
 
     @Override
-    public Collection<Student> getMaxPercentage() throws SQLException, ClassNotFoundException {
+    public Collection<Student> getMaxPercentage() throws SQLException, ClassNotFoundException, FileNotFoundException {
         Collection<Student> students = new ArrayList<>();
         Connection connection = MySQLConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students where (total_score * 100 / 300) = (SELECT MAX(total_score * 100 / 300) FROM students);");
@@ -53,7 +54,7 @@ public class StudentDao implements StudentDaoInterface {
     }
 
     @Override
-    public Collection<Student> getMaxMathsScore() throws SQLException, ClassNotFoundException {
+    public Collection<Student> getMaxMathsScore() throws SQLException, ClassNotFoundException, FileNotFoundException {
         Collection<Student> students = new ArrayList<>();
         Connection connection = MySQLConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students where maths = (SELECT MAX(maths) FROM students);");
@@ -63,7 +64,7 @@ public class StudentDao implements StudentDaoInterface {
     }
 
     @Override
-    public Collection<Student> getMaxMathsAndScienceScore() throws SQLException, ClassNotFoundException {
+    public Collection<Student> getMaxMathsAndScienceScore() throws SQLException, ClassNotFoundException, FileNotFoundException {
         Collection<Student> students = new ArrayList<>();
         Connection connection = MySQLConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students where maths + science = (SELECT MAX(maths) + MAX(Science) FROM students);");
@@ -74,7 +75,7 @@ public class StudentDao implements StudentDaoInterface {
 
 
     @Override
-    public Collection<Student> listStudentsDescending() throws SQLException, ClassNotFoundException {
+    public Collection<Student> listStudentsDescending() throws SQLException, ClassNotFoundException, FileNotFoundException {
         Collection<Student> students = new ArrayList<>();
         Connection connection = MySQLConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students ORDER BY roll_number DESC");
