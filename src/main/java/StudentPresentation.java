@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.Scanner;
 
 public class StudentPresentation implements StudentPresentationInterface{
-        public StudentService studentService;
+        public StudentServiceInterface studentService;
         Scanner scanner = new Scanner(System.in);
     {
         try {

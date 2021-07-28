@@ -2,7 +2,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 public class StudentService implements StudentServiceInterface{
-    StudentDao studentDao = new StudentDao();
+    StudentDaoInterface studentDao = new StudentDao();
 
     public StudentService() throws SQLException, ClassNotFoundException {
     }
