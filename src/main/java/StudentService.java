@@ -1,51 +1,48 @@
 import java.sql.SQLException;
 import java.util.Collection;
 
-public class StudentService implements StudentServiceInterface{
+public class StudentService implements StudentServiceInterface {
     StudentDaoInterface studentDao = new StudentDao();
 
     public StudentService() throws SQLException, ClassNotFoundException {
     }
 
     @Override
-    public boolean addStudent(Student student) {
+    public boolean addStudent(Student student) throws SQLException, ClassNotFoundException {
         return studentDao.addStudent(student);
 
     }
 
     @Override
-    public boolean deleteStudent(int rollNumber) {
+    public boolean deleteStudent(int rollNumber) throws SQLException, ClassNotFoundException {
         return studentDao.deleteStudent(rollNumber);
 
     }
 
     @Override
-    public Collection<Student> listStudentsAscending() {
+    public Collection<Student> listStudentsAscending() throws SQLException, ClassNotFoundException {
         return studentDao.listStudentsAscending();
     }
 
     @Override
-    public Collection<Student> getMaxPercentage() {
+    public Collection<Student> getMaxPercentage() throws SQLException, ClassNotFoundException {
         return studentDao.getMaxPercentage();
     }
 
     @Override
-    public Collection<Student> getMaxMathsScore() {
+    public Collection<Student> getMaxMathsScore() throws SQLException, ClassNotFoundException {
         return studentDao.getMaxMathsScore();
     }
 
     @Override
-    public Collection<Student> getMaxMathsAndScienceScore() {
+    public Collection<Student> getMaxMathsAndScienceScore() throws SQLException, ClassNotFoundException {
         return studentDao.getMaxMathsAndScienceScore();
     }
 
     @Override
-    public Collection<Student> listStudentsDescending() {
+    public Collection<Student> listStudentsDescending() throws SQLException, ClassNotFoundException {
         return studentDao.listStudentsDescending();
     }
 
-    @Override
-    public void closeConnection() {
-        studentDao.closeConnection();
-    }
+
 }

@@ -29,6 +29,7 @@ public class StudentPresentation implements StudentPresentationInterface{
         @Override
         public void performMenu(int choice) {
             Collection<Student> collection;
+            try {
             switch (choice) {
                 case 1: {
                     System.out.println("Enter Student Name: ");
@@ -39,7 +40,7 @@ public class StudentPresentation implements StudentPresentationInterface{
                     int mathsScore =  getScore();
                     System.out.println("Enter Science Score: ");
                     int scienceScore =  getScore();
-                    if (studentService.addStudent(new Student(name,englishScore,mathsScore,scienceScore)))
+                    if (studentService.                                                                                                           addStudent(new Student(name,englishScore,mathsScore,scienceScore)))
                         System.out.println("Student Created Successfully");
                     else System.out.println("Student Creation failed");
                     break;
@@ -112,10 +113,13 @@ public class StudentPresentation implements StudentPresentationInterface{
                     break;
                 case 8:
                     System.out.println("Thanks for using Student Management System!");
-                    studentService.closeConnection();
                     System.exit(0);
                 default:
                     System.out.println("Invalid Choice Try Again");
+            }
+        } catch (SQLException | ClassNotFoundException e){
+                e.printStackTrace();
+
             }
 
         }
