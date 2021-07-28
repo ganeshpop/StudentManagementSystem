@@ -1,4 +1,4 @@
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Scanner;
@@ -70,7 +70,7 @@ public class StudentPresentation implements StudentPresentationInterface{
                 default:
                     System.out.println("Invalid Choice Try Again");
             }
-        } catch (SQLException | ClassNotFoundException | FileNotFoundException e){
+        } catch (SQLException | ClassNotFoundException | IOException e){
                 e.printStackTrace();
 
             }
