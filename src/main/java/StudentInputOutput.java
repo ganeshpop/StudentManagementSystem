@@ -11,7 +11,7 @@ public class StudentInputOutput {
             for (Student student : collection) {
                 System.out.println("-----------------------");
                 System.out.println("Roll Number: " + student.getRollNumber() + "\nName: "
-                                    + student.getStudentName() + "\nMarks:\nEnglish: " + student.getMarksInEnglish()
+                                    + student.getStudentName() + "\n---Marks---\nEnglish: " + student.getMarksInEnglish()
                                     +  "\nMaths: " + student.getMarksInMaths() + "\nScience: " + student.getMarksInScience());
                 System.out.println("-----------------------");
             }
