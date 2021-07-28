@@ -19,9 +19,13 @@ public class StudentInputOutput {
     }
 
     public static Student createStudent(){
-
-        System.out.println("Enter Student Name: ");
-        String name = scanner.nextLine();
+        String name;
+        while (true) {
+            System.out.println("Enter Student Name: ");
+            name = scanner.nextLine();
+            if(name.length() > 0) break;
+            else System.out.println("Invalid Name");
+        }
         System.out.println("Enter English Score: ");
         int englishScore = getScore();
         System.out.println("Enter Maths Score: ");
@@ -41,5 +45,6 @@ public class StudentInputOutput {
             } else System.out.println("Only Integers Allowed Try Again ");
         }
     }
+
 
 }
