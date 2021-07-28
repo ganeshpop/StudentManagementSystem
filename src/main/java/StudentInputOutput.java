@@ -30,6 +30,7 @@ public class StudentInputOutput {
         int scienceScore =  getScore();
         return new Student(name,englishScore,mathsScore,scienceScore);
     }
+
     private static int getScore(){
         while (true) {
             String userInput = scanner.nextLine();

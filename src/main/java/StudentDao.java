@@ -67,7 +67,7 @@ public class StudentDao implements StudentDaoInterface {
     public Collection<Student> getMaxMathsAndScienceScore() throws SQLException, ClassNotFoundException, IOException {
         Collection<Student> students = new ArrayList<>();
         Connection connection = MySQLConnection.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students where maths + science = (SELECT MAX(maths) + MAX(Science) FROM students);");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students where maths + science = (SELECT MAX(maths + science) FROM students);");
         ResultSet resultSet = preparedStatement.executeQuery();
         generateStudents(students, resultSet);
         return students;
