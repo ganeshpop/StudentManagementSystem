@@ -36,9 +36,4 @@ public class Student {
         return studentName;
     }
 
-    @Override
-    public String toString(){
-        return "Roll Number: " + rollNumber + "\nName: " + studentName + "\nMarks\nEnglish: " + marksInEnglish +  "\nMaths: " + marksInMaths + "\nScience: " + marksInScience;
-    }
-
 }
