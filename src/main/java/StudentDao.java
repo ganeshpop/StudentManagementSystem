@@ -91,7 +91,7 @@ public class StudentDao implements StudentDaoInterface {
             int marksInEnglish = resultSet.getInt("english");
             int marksInMaths  = resultSet.getInt("maths");
             int marksInScience = resultSet.getInt("science");
-            students.add(new Student(rollNumber,studentName,marksInEnglish,marksInMaths,marksInScience));
+            students.add(new Student(rollNumber,marksInScience,marksInEnglish,marksInMaths,studentName));
         }
     }
 }

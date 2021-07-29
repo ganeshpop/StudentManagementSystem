@@ -30,6 +30,7 @@ public class StudentPresentation implements StudentPresentationInterface{
         @Override
         public void performMenu(int choice) {
             Collection<Student> collection;
+
                 switch (choice) {
                     case 1:
                         try {
@@ -96,6 +97,7 @@ public class StudentPresentation implements StudentPresentationInterface{
                     default:
                         System.out.println("Invalid Choice Try Again");
                     }
+            System.out.println("-----------------------");
 
             }
 

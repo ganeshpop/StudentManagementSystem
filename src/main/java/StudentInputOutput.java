@@ -13,7 +13,6 @@ public class StudentInputOutput {
                 System.out.println("Roll Number: " + student.getRollNumber() + "\nName: "
                                     + student.getStudentName() + "\n---Marks---\nEnglish: " + student.getMarksInEnglish()
                                     +  "\nMaths: " + student.getMarksInMaths() + "\nScience: " + student.getMarksInScience());
-                System.out.println("-----------------------");
             }
         }
     }
@@ -32,7 +31,7 @@ public class StudentInputOutput {
         int mathsScore =  getScore();
         System.out.println("Enter Science Score: ");
         int scienceScore =  getScore();
-        return new Student(name,englishScore,mathsScore,scienceScore);
+        return new Student(englishScore, mathsScore, scienceScore, name);
     }
 
     private static int getScore(){
